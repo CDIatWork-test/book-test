@@ -23,7 +23,7 @@ Ein Container stellt ein Komponentenmodell zur Verfügung, welches vom Applikati
 
 Annotationen sind zusätzliche Metadaten und wurden in Java 5 als Erweiterung des Typsystems eingeführt. Da CDI hauptsächlich auf Annotationen basiert und die Erstellung eigener Annotationen zum täglichen Handwerkszeug für die Arbeit mit CDI gehören, sehen wir uns ein paar Details etwas näher an. Bei Annotationen muss grundsätzlich unterschieden werden, ob sie zur Laufzeit der Applikation abgefragt werden können oder nicht. Ein bekannter Vertreter für Annotationen, welche nicht zur Laufzeit abgefragt werden können ist @Override , da hier @Retention\(RetentionPolicy.SOURCE\) definiert ist. Für ein Komponentenmodell wie CDI sind natürlich nur Informationen sinnvoll, welche zur Laufzeit zur Verfügung stehen. Daher müssen alle Annotationen, welche Sie in Zusammenhang mit CDI erstellen, immer @Retention\(RetentionPolicy.RUNTIME\) definieren. Anderenfalls sieht der CDI-Container die Annotation zur Laufzeit nicht.
 
-Darüber hinaus muss noch angegeben werden an welchen Stellen die Annotation verwendet werden kann. Dies wird mit Hilfe von **@Target** ausgedrückt. Somit können wir bereits die gebräuchlichste Annotation namens @Inject für die tägliche Arbeit mit CDI, welche in Listing Spezifizierter Aufbau von @Inject dargestellt ist, analysieren.
+Darüber hinaus muss noch angegeben werden an welchen Stellen die Annotation verwendet werden kann. Dies wird mit Hilfe von **@Target** ausgedrückt. Somit können wir bereits die gebräuchlichste Annotation namens @Inject für die tägliche Arbeit mit CDI, welche in Listing [Spezifizierter Aufbau von @Inject](#spezifizierter-aufbau-von-inject) dargestellt ist, analysieren.
 
 ###### Spezifizierter Aufbau von @Inject
 
