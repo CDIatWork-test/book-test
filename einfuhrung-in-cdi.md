@@ -2,7 +2,7 @@
 
 Unter dem Namen "Contexts and Dependency Injection for the Java EE platform", kurz CDI, wurde am 10. Dezember 2009 eine neue Spezifikation in der finalen Version veröffentlicht, welche schon bald darauf das Java EE Ökosystem nachhaltig verändern sollte. Inspiriert von erfolgreichen Open-Source Frameworks \(wie bspw. Spring, Seam, Guice\) und der damit verbundenen langjährigen Erfahrung wurde ein neues typsicheres Komponentenmodell spezifiziert, welches die tägliche Arbeit erheblich erleichtert. Doch auch komplexere Anforderungen kommen dank der Flexibilität von CDI nicht zu kurz. Diese Flexibilität ermöglichte portable CDI Erweiterungen, welche entscheidend zum Erfolg von CDI beigetragen haben.
 
-**Ziel dieses Buchs      
+**Ziel dieses Buchs        
 **
 
 In diesem Buch lernen Sie Schritt für Schritt die Grundkonzepte von CDI und wie Sie sowohl Java SE als auch Java EE Projekte erfolgreich mit diesem neuen Komponentenmodell umsetzen können. Wie bei jeder Technologie gibt es auch bei CDI den einen oder anderen Fallstrick. Durch Tipps und Tricks lernen Sie diese zu erkennen und erfahren Details zu den Lösungsmöglichkeiten. Neben der Integration mit anderen Technologien widmen wir uns auch erfolgreichen CDI-Erweiterungen und zeigen Ihnen auf wie Sie von diesen profitieren können.
@@ -52,5 +52,5 @@ public class HelloWorldBean {
 
 Nur anhand der Klasse kann in diesem Fall nicht festgestellt werden, ob es sich um ein CDI-Bean handelt oder nicht. Damit der CDI-Container von dieser Klasse überhaupt erfährt muss eine Marker-Datei namens beans.xml je Modul \(in META-INF bei JAR-Dateien bzw. WEB-INF bei WAR-Dateien\) angelegt werden. Wie bereits der Begriff Marker-Datei vermuten lässt kann diese Datei leer \(= 0 Byte\) sein, da diese im einfachsten Fall lediglich zur Kennzeichnung sog. Bean-Archive \(bzw. Bean Deployment Archive\) verwendet wird. Somit muss nicht der gesamte Klassenpfad gescannt werden, sondern nur die entsprechend markierten Archive.
 
-
+Selbst wenn der CDI-Container die Klasse aus Listing Minimales CDI-Bean gefunden hat, muss dieses Bean vom Container implizit via Dependency-Injection oder explizit via manuellem Bean-Lookup vom Container bezogen werden. Würden Sie manuell eine Instanz dieser Klasse erzeugen, dann wird diese nicht vom Container verwaltet und die Instanz ist auch kein CDI-Bean.
 
