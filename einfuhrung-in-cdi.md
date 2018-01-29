@@ -2,7 +2,7 @@
 
 Unter dem Namen "Contexts and Dependency Injection for the Java EE platform", kurz CDI, wurde am 10. Dezember 2009 eine neue Spezifikation in der finalen Version veröffentlicht, welche schon bald darauf das Java EE Ökosystem nachhaltig verändern sollte. Inspiriert von erfolgreichen Open-Source Frameworks \(wie bspw. Spring, Seam, Guice\) und der damit verbundenen langjährigen Erfahrung wurde ein neues typsicheres Komponentenmodell spezifiziert, welches die tägliche Arbeit erheblich erleichtert. Doch auch komplexere Anforderungen kommen dank der Flexibilität von CDI nicht zu kurz. Diese Flexibilität ermöglichte portable CDI Erweiterungen, welche entscheidend zum Erfolg von CDI beigetragen haben.
 
-**Ziel dieses Buchs  
+**Ziel dieses Buchs    
 **
 
 In diesem Buch lernen Sie Schritt für Schritt die Grundkonzepte von CDI und wie Sie sowohl Java SE als auch Java EE Projekte erfolgreich mit diesem neuen Komponentenmodell umsetzen können. Wie bei jeder Technologie gibt es auch bei CDI den einen oder anderen Fallstrick. Durch Tipps und Tricks lernen Sie diese zu erkennen und erfahren Details zu den Lösungsmöglichkeiten. Neben der Integration mit anderen Technologien widmen wir uns auch erfolgreichen CDI-Erweiterungen und zeigen Ihnen auf wie Sie von diesen profitieren können.
@@ -26,12 +26,17 @@ Annotationen sind zusätzliche Metadaten und wurden in Java 5 als Erweiterung de
 Darüber hinaus muss noch angegeben werden an welchen Stellen die Annotation verwendet werden kann. Dies wird mit Hilfe von **@Target** ausgedrückt. Somit können wir bereits die gebräuchlichste Annotation namens @Inject für die tägliche Arbeit mit CDI, welche in Listing [Spezifizierter Aufbau von @Inject](#spezifizierter-aufbau-von-inject) dargestellt ist, analysieren.
 
 ###### Spezifizierter Aufbau von @Inject
+
 ```
 @Target({ElementType.CONSTRUCTOR,
     ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Inject {}
 ```
+
+Im Falle von @Inject sind die möglichen Verwendungsziele Konstruktoren, Methoden und Felder. Abgesehen von den eben erwähnten Elementtypen sind im Kontext von CDI noch ElementType.TYPE für Annotationen auf Klassenebene, ElementType.PARAMETER für Annotationen auf Methodenparametern und ElementType.ANNOTATION\_TYPE für Annotationen auf Annotationen wichtig. Eine Annotation zu annotieren mag sich anfänglich etwas ungewohnt anhören. Im Laufe des Buches werden wir jedoch sehr sinnvolle Verwendungsmöglichkeiten für diesen Elementtyp kennenlernen.
+
+## Hello CDI
 
 
 
