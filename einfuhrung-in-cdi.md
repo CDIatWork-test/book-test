@@ -26,7 +26,6 @@ Annotationen sind zusätzliche Metadaten und wurden in Java 5 als Erweiterung de
 Darüber hinaus muss noch angegeben werden an welchen Stellen die Annotation verwendet werden kann. Dies wird mit Hilfe von **@Target** ausgedrückt. Somit können wir bereits die gebräuchlichste Annotation namens @Inject für die tägliche Arbeit mit CDI, welche in Listing [Spezifizierter Aufbau von @Inject](#spezifizierter-aufbau-von-inject) dargestellt ist, analysieren.
 
 ###### Spezifizierter Aufbau von @Inject
-
 ```
 @Target({ElementType.CONSTRUCTOR,
     ElementType.METHOD, ElementType.FIELD})
