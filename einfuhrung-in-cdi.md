@@ -2,7 +2,7 @@
 
 Unter dem Namen "Contexts and Dependency Injection for the Java EE platform", kurz CDI, wurde am 10. Dezember 2009 eine neue Spezifikation in der finalen Version veröffentlicht, welche schon bald darauf das Java EE Ökosystem nachhaltig verändern sollte. Inspiriert von erfolgreichen Open-Source Frameworks \(wie bspw. Spring, Seam, Guice\) und der damit verbundenen langjährigen Erfahrung wurde ein neues typsicheres Komponentenmodell spezifiziert, welches die tägliche Arbeit erheblich erleichtert. Doch auch komplexere Anforderungen kommen dank der Flexibilität von CDI nicht zu kurz. Diese Flexibilität ermöglichte portable CDI Erweiterungen, welche entscheidend zum Erfolg von CDI beigetragen haben.
 
-**Ziel dieses Buchs        
+**Ziel dieses Buchs          
 **
 
 In diesem Buch lernen Sie Schritt für Schritt die Grundkonzepte von CDI und wie Sie sowohl Java SE als auch Java EE Projekte erfolgreich mit diesem neuen Komponentenmodell umsetzen können. Wie bei jeder Technologie gibt es auch bei CDI den einen oder anderen Fallstrick. Durch Tipps und Tricks lernen Sie diese zu erkennen und erfahren Details zu den Lösungsmöglichkeiten. Neben der Integration mit anderen Technologien widmen wir uns auch erfolgreichen CDI-Erweiterungen und zeigen Ihnen auf wie Sie von diesen profitieren können.
@@ -17,7 +17,7 @@ Eine zweite Herausforderung bei der Entwicklung von Applikationen sind die Refer
 
 Ein Container stellt ein Komponentenmodell zur Verfügung, welches vom Applikationscode verwendet werden kann, um Teile der Applikation einfacher umzusetzen. Dadurch stellen sie das Bindeglied zwischen der darunter liegenden Laufzeitumgebung und dem Applikationscode dar.Sowohl beim Context- als auch beim Dependency-Management gab es bis zu JDK 5 keine Alternative, um diese Grundproblematik effizienter und vor allem typsicher zu lösen. 2004 wurden die anfänglich stark unterschätzten Annotationen mit Java 5 eingeführt. Doch erst 2006 wurden mit Java EE 5 Annotationen erstmals \(offiziell\) für Dependency-Injection verwendet. Im darauffolgenden Jahr wurde dieser Ansatz von einem Projekt namens Guice bezüglich der Typsicherheit verfeinert. Durch die zunehmende Beliebtheit von typsicheren Komponentenmodellen war eine Spezifikation solcher Konzepte naheliegend. Ursprünglich wurde CDI \(JSR-299\) unter dem Namen "Web Beans" geführt. Es war nämlich das primäre Ziel ein Bindeglied zwischen der JSF- und EJB-Spezifikation zu schaffen. Drei Jahre später feierte CDI sein Debüt. Bis zur finalen Version der Spezifikation hatte sich nicht nur der Name der Spezifikation geändert, sondern es wurden mehrere größere Überarbeitungen vorgenommen. So wurde bspw. ein Teil der Spezifikation ausgelagert \(zu JSR-330\) und stellt nicht nur die Basis für CDI dar, sondern auch für andere Komponentenmodelle. Außerdem ist CDI in der heutigen Form nicht mehr an Java EE gebunden, sondern kann ebenfalls problemlos in Java SE Applikationen verwendet werden.
 
-> Tipp: JSR-330 besteht aus 5 Annotationen und einem Interface und spezifiziert einen minimalen Funktionsumfang, welcher für Dependency-Injection und die Definition eigener Scopes erforderlich ist. Neben Implementierungen der CDI-Spezifikation wird die Spezifikation auch von anderen Projekten als Basis verwendet.
+> **Tipp:** JSR-330 besteht aus 5 Annotationen und einem Interface und spezifiziert einen minimalen Funktionsumfang, welcher für Dependency-Injection und die Definition eigener Scopes erforderlich ist. Neben Implementierungen der CDI-Spezifikation wird die Spezifikation auch von anderen Projekten als Basis verwendet.
 
 ## Annotationen als zentraler Bestandteil
 
@@ -53,4 +53,8 @@ public class HelloWorldBean {
 Nur anhand der Klasse kann in diesem Fall nicht festgestellt werden, ob es sich um ein CDI-Bean handelt oder nicht. Damit der CDI-Container von dieser Klasse überhaupt erfährt muss eine Marker-Datei namens beans.xml je Modul \(in META-INF bei JAR-Dateien bzw. WEB-INF bei WAR-Dateien\) angelegt werden. Wie bereits der Begriff Marker-Datei vermuten lässt kann diese Datei leer \(= 0 Byte\) sein, da diese im einfachsten Fall lediglich zur Kennzeichnung sog. Bean-Archive \(bzw. Bean Deployment Archive\) verwendet wird. Somit muss nicht der gesamte Klassenpfad gescannt werden, sondern nur die entsprechend markierten Archive.
 
 Selbst wenn der CDI-Container die Klasse aus Listing Minimales CDI-Bean gefunden hat, muss dieses Bean vom Container implizit via Dependency-Injection oder explizit via manuellem Bean-Lookup vom Container bezogen werden. Würden Sie manuell eine Instanz dieser Klasse erzeugen, dann wird diese nicht vom Container verwaltet und die Instanz ist auch kein CDI-Bean.
+
+> **Tipp:** Ab CDI 1.1 ist die Datei beans.xml optional. Um mit CDI 1.0 Bean-Module ohne beans.xml zu integrieren kann bspw. auf die SPI von CDI zurückgegriffen werden. Die entsprechenden Mechanismen werden im Kapitel Portable CDI-Erweiterungen vorgestellt.
+
+
 
