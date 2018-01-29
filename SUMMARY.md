@@ -1,6 +1,6 @@
-# Summary
+﻿# Summary
 
-* [Introduction](README.md)
+* [Introduction](README.adoc)
 * [Einführung in CDI](einfuhrung-in-cdi.md)
 * [CDI Grundkonzepte](cdi-grundkonzepte.md)
 * [CDI und Java EE](cdi-und-java-ee.md)
