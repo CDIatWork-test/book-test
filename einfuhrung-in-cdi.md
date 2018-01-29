@@ -2,7 +2,7 @@
 
 Unter dem Namen "Contexts and Dependency Injection for the Java EE platform", kurz CDI, wurde am 10. Dezember 2009 eine neue Spezifikation in der finalen Version veröffentlicht, welche schon bald darauf das Java EE Ökosystem nachhaltig verändern sollte. Inspiriert von erfolgreichen Open-Source Frameworks \(wie bspw. Spring, Seam, Guice\) und der damit verbundenen langjährigen Erfahrung wurde ein neues typsicheres Komponentenmodell spezifiziert, welches die tägliche Arbeit erheblich erleichtert. Doch auch komplexere Anforderungen kommen dank der Flexibilität von CDI nicht zu kurz. Diese Flexibilität ermöglichte portable CDI Erweiterungen, welche entscheidend zum Erfolg von CDI beigetragen haben.
 
-**Ziel dieses Buchs    
+**Ziel dieses Buchs      
 **
 
 In diesem Buch lernen Sie Schritt für Schritt die Grundkonzepte von CDI und wie Sie sowohl Java SE als auch Java EE Projekte erfolgreich mit diesem neuen Komponentenmodell umsetzen können. Wie bei jeder Technologie gibt es auch bei CDI den einen oder anderen Fallstrick. Durch Tipps und Tricks lernen Sie diese zu erkennen und erfahren Details zu den Lösungsmöglichkeiten. Neben der Integration mit anderen Technologien widmen wir uns auch erfolgreichen CDI-Erweiterungen und zeigen Ihnen auf wie Sie von diesen profitieren können.
@@ -37,6 +37,20 @@ public @interface Inject {}
 Im Falle von @Inject sind die möglichen Verwendungsziele Konstruktoren, Methoden und Felder. Abgesehen von den eben erwähnten Elementtypen sind im Kontext von CDI noch ElementType.TYPE für Annotationen auf Klassenebene, ElementType.PARAMETER für Annotationen auf Methodenparametern und ElementType.ANNOTATION\_TYPE für Annotationen auf Annotationen wichtig. Eine Annotation zu annotieren mag sich anfänglich etwas ungewohnt anhören. Im Laufe des Buches werden wir jedoch sehr sinnvolle Verwendungsmöglichkeiten für diesen Elementtyp kennenlernen.
 
 ## Hello CDI
+
+Listing Minimales CDI-Bean zeigt ein POJO \(Plain Old Java Object\), welches bereits ein vollwertiges CDI-Bean darstellt. Wie unschwer zu erkennen ist, wird hier weder eine CDI-Klasse noch eine spezielle Annotation verwendet.
+
+###### Minimales CDI-Bean
+
+```
+public class HelloWorldBean {
+  public String hello() {
+    return "Hello CDI";
+  }
+}
+```
+
+Nur anhand der Klasse kann in diesem Fall nicht festgestellt werden, ob es sich um ein CDI-Bean handelt oder nicht. Damit der CDI-Container von dieser Klasse überhaupt erfährt muss eine Marker-Datei namens beans.xml je Modul \(in META-INF bei JAR-Dateien bzw. WEB-INF bei WAR-Dateien\) angelegt werden. Wie bereits der Begriff Marker-Datei vermuten lässt kann diese Datei leer \(= 0 Byte\) sein, da diese im einfachsten Fall lediglich zur Kennzeichnung sog. Bean-Archive \(bzw. Bean Deployment Archive\) verwendet wird. Somit muss nicht der gesamte Klassenpfad gescannt werden, sondern nur die entsprechend markierten Archive.
 
 
 
